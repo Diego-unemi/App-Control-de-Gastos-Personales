@@ -1,3 +1,27 @@
-{% extends 'layout.html'%}
+{% extends 'layout.html' %}
 {% block body %}
+<div class="resume">
+    <table class="table table-bordered border-info">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Detalles</th>
+                <th scope="col">Monto</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bill in bills %}
+            <tr>
+                <td>{{ bill.name }}</td>
+                <td>{{ bill.description }}</td>
+                <td>$ {{ bill.amount }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <th colspan="2">Total:</th>
+                <th>$ {{ total }}</th>
+            </tr>
+        </tbody>
+    </table>
+</div>
 {% endblock %}

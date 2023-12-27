@@ -21,8 +21,8 @@ body {
   justify-content: center;
 }
 .nav_image img {
-  height: 35px;
-  width: 35px;
+  height: 65px;
+  width: 65px;
   border-radius: 50%;
   object-fit: cover;
 }
