@@ -1,4 +1,48 @@
 {% extends 'layout.html' %}
 {% block body %}
+<div class="content" style="margin-left: 200px;">
+    <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Extn.</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Extn.</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot>
+    </table>
 
+<!-- Modal -->
+<div class="modale" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2>Please Login</h2>
+        <a href="#" class="btn-close closemodale" aria-hidden="true">&times;</a>
+      </div>
+      <div class="modal-body">
+        <input type="text" name="u" placeholder="User" size="20" /><br>
+        <input type="text" name="p" placeholder="&bull;&bull;&bull;&bull;" size="20" /></div>
+      <div class="modal-footer">
+    
+  
+        <a href="#" class="btn" id="btn_ingresar">Login</a>
+      </div>
+    </div>
+  </div>
+  <!-- /Modal -->
+  
+    <h1>Dead Simple Modal</h1>
+    <p><a href="#" class="btn btn-big openmodale">Open Login Box</a></p>
 {% endblock %}

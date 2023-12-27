@@ -1,9 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:/Users/newco/OneDrive/Escritorio/ProyectoED/data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///c:/Users/neira/OneDrive/Documentos/proyecto/App-Control-de-Gastos-Personales/data.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 app.app_context().push()
@@ -26,12 +26,23 @@ def home():
     for bill in bills:
         total += float(bill.amount)
     total = round(total, 2)
+    total = '{:.2f}'.format(total)
     return render_template('index.html', bills=bills, total=total)
 
 
 @app.route('/registro')
 def registro():
-    return render_template('record.html')
+    bills = Bill.query.order_by(Bill.date.asc()).all()
+    return render_template('record.html', bills=bills)
+
+
+@app.route('/del', methods=['POST'])
+def eliminar():
+    bill_id = request.form.get('bill-id')
+    bill = db.session.query(Bill).filter(Bill.id == bill_id).first()
+    db.session.delete(bill)
+    db.session.commit()
+    return redirect('/registro')
 
 
 @app.route('/graficos')

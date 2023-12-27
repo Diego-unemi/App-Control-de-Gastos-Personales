@@ -1,28 +1,33 @@
 /* Import Google font - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 body {
   min-height: 100vh;
   background: #eef5fe;
 }
+
 /* Pre css */
 .flex {
   display: flex;
   align-items: center;
 }
+
 .nav_image {
   display: flex;
   min-width: 55px;
   justify-content: center;
 }
+
 .nav_image img {
-  height: 65px;
-  width: 65px;
+  height: 35px;
+  width: 35px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -33,30 +38,36 @@ body {
   top: 0;
   left: 0;
   height: 100%;
-  width: 270px;
+  width: 200px;
+  /* Ajusta el ancho según tus necesidades */
   background: #fff;
   padding: 15px 10px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
   transition: all 0.4s ease;
 }
+
 .sidebar.close {
   width: calc(55px + 20px);
 }
+
 .logo_items {
   gap: 8px;
 }
+
 .logo_name {
   font-size: 22px;
   color: #333;
   font-weight: 500px;
   transition: all 0.3s ease;
 }
+
 .sidebar.close .logo_name,
 .sidebar.close #lock-icon,
 .sidebar.close #sidebar-close {
   opacity: 0;
   pointer-events: none;
 }
+
 #lock-icon,
 #sidebar-close {
   padding: 10px;
@@ -66,10 +77,12 @@ body {
   margin-left: -4px;
   transition: all 0.3s ease;
 }
+
 #sidebar-close {
   display: none;
   color: #333;
 }
+
 .menu_container {
   display: flex;
   flex-direction: column;
@@ -78,21 +91,26 @@ body {
   overflow-y: auto;
   height: calc(100% - 82px);
 }
+
 .menu_container::-webkit-scrollbar {
   display: none;
 }
+
 .menu_title {
   position: relative;
   height: 50px;
   width: 55px;
 }
+
 .menu_title .title {
   margin-left: 15px;
   transition: all 0.3s ease;
 }
+
 .sidebar.close .title {
   opacity: 0;
 }
+
 .menu_title .line {
   position: absolute;
   left: 50%;
@@ -103,28 +121,43 @@ body {
   background: #aaa;
   transition: all 0.3s ease;
 }
+
 .menu_title .line {
   opacity: 0;
 }
+
 .sidebar.close .line {
   opacity: 1;
 }
+
 .item {
   list-style: none;
 }
+
 .link {
   text-decoration: none;
   border-radius: 8px;
   margin-bottom: 8px;
   color: #707070;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  /* Añadido para una transición suave */
+  display: flex;
+  /* Hacer los elementos en línea flexibles */
+  align-items: center;
+  /* Centrar verticalmente los elementos en línea */
 }
+
 .link:hover {
   color: #fff;
   background-color: #4070f4;
+  border-radius: 8px;
+  /* Asegura que el borde redondeado se mantiene en hover */
 }
+
 .link span {
   white-space: nowrap;
 }
+
 .link i {
   height: 50px;
   min-width: 55px;
@@ -132,7 +165,8 @@ body {
   font-size: 22px;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
+  border-radius: 2px;
+  margin-right: -8px;
 }
 
 .sidebar_profile {
@@ -141,10 +175,12 @@ body {
   gap: 15px;
   border-top: 2px solid rgba(0, 0, 0, 0.1);
 }
+
 .sidebar_profile .name {
   font-size: 18px;
   color: #333;
 }
+
 .sidebar_profile .email {
   font-size: 15px;
   color: #333;
@@ -163,6 +199,7 @@ body {
   border-radius: 0 0 8px 8px;
   justify-content: space-between;
 }
+
 #sidebar-open {
   font-size: 30px;
   color: #333;
@@ -170,6 +207,7 @@ body {
   margin-right: 20px;
   display: none;
 }
+
 .search_box {
   height: 46px;
   max-width: 500px;
@@ -181,6 +219,7 @@ body {
   font-size: 18px;
   color: #333;
 }
+
 .navbar img {
   height: 40px;
   width: 40px;
@@ -193,26 +232,157 @@ body {
     left: 65%;
   }
 }
+
 @media screen and (max-width: 800px) {
   .sidebar {
     left: 0;
     z-index: 1000;
   }
+
   .sidebar.close {
     left: -100%;
   }
+
   #sidebar-close {
     display: block;
   }
+
   #lock-icon {
     display: none;
   }
+
   .navbar {
     left: 0;
     max-width: 100%;
     transform: translateX(0%);
   }
+
   #sidebar-open {
     display: block;
   }
+}
+
+.menu_items {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* Align items to the left */
+  margin-top: 20px;
+  /* Adjust the margin as needed */
+}
+
+.menu_title {
+  margin-bottom: 8px;
+  /* Add some space between titles */
+}
+
+/* modal */
+.modale {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+
+
+/* TABLA PRUEBA */
+.btn {
+  background: #428bca;
+  border: #357ebd solid 0px;
+  border-radius: 3px;
+  color: #fff;
+  display: inline-block;
+  font-size: 14px;
+  padding: 8px 15px;
+  text-decoration: none;
+  text-align: center;
+  min-width: 60px;
+  position: relative;
+  transition: color .1s ease;
+}
+.btn:hover {
+  background: #357ebd;
+}
+.btn.btn-big {
+  font-size: 18px;
+  padding: 15px 20px;
+  min-width: 100px;
+}
+.btn-close {
+  color: #aaaaaa;
+  font-size: 20px;
+  text-decoration: none;
+  padding:10px;
+  position: absolute;
+  right: 7px;
+  top: 0;
+}
+.btn-close:hover {
+  color: #919191;
+}
+.modale:before {
+  content: "";
+  display: none;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+.opened:before {
+  display: block;
+}
+.opened .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+  top: 20%;
+}
+.modal-dialog {
+  background: #fefefe;
+  border: #333333 solid 0px;
+  border-radius: 5px;
+  margin-left: -200px;
+  text-align:center;
+  position: fixed;
+  left: 50%;
+  top: -100%;
+  z-index: 11;
+  width: 360px;
+  box-shadow:0 5px 10px rgba(0,0,0,0.3);
+  -webkit-transform: translate(0, -500%);
+  -ms-transform: translate(0, -500%);
+  transform: translate(0, -500%);
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  -moz-transition: -moz-transform 0.3s ease-out;
+  -o-transition: -o-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+}
+.modal-body {
+  padding: 20px;
+}
+.modal-body input{
+  width:200px;
+  padding:8px;
+  border:1px solid #ddd;
+  color:#888;
+  outline:0;
+  font-size:14px;
+  font-weight:bold
+}
+.modal-header,
+.modal-footer {
+  padding: 10px 20px;
+}
+.modal-header {
+  border-bottom: #eeeeee solid 1px;
+}
+.modal-header h2 {
+  font-size: 20px;
 }
