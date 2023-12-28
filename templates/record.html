@@ -1,48 +1,76 @@
 {% extends 'layout.html' %}
 {% block body %}
 <div class="content" style="margin-left: 200px;">
-    <table id="example" class="table table-striped" style="width:100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Extn.</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Extn.</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </tfoot>
-    </table>
+  <div class="resume">
+      <table class="table table-bordered border-info">
+          <thead>
+              <tr>
+                <th colspan="5"><button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#modal1">Agregar</button></th>
+              </tr>
+              <tr>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Detalles</th>
+                  <th scope="col">Categoría</th>
+                  <th scope="col">Monto</th>
+                  <th scope="col">Acciones</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for bill in bills %}
+              <tr>
+                  <td>{{ bill.name }}</td>
+                  <td>{{ bill.description }}</td>
+                  <td>{{ bill.category }}</td>
+                  <td>$ {{ bill.amount }}</td>
+                  <td>
+                    <form action="{{ url_for('eliminar') }}" method="post">
+                      <button value="{{ bill.id }}" name="bill-id" class="btn btn-danger">Eliminar</button>
+                    </form>
+                  </td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+  </div>
 
-<!-- Modal -->
-<div class="modale" aria-hidden="true">
+  <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-header">
-        <h2>Please Login</h2>
-        <a href="#" class="btn-close closemodale" aria-hidden="true">&times;</a>
-      </div>
-      <div class="modal-body">
-        <input type="text" name="u" placeholder="User" size="20" /><br>
-        <input type="text" name="p" placeholder="&bull;&bull;&bull;&bull;" size="20" /></div>
-      <div class="modal-footer">
-    
-  
-        <a href="#" class="btn" id="btn_ingresar">Login</a>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Gasto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{{ url_for('agregar') }}" method="post">
+            <div class="mb-3">
+              <label for="name" class="form-label">Nombre</label>
+              <input type="text" class="form-control" name="nombre">
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Descripción</label>
+              <input type="text" class="form-control" name="descripcion">
+            </div>
+            <div class="mb-3">
+              <label for="categoria" class="form-label">Categoría</label>
+              <select name="categoria" class="form-select">
+                <option selected>-------</option>
+                <option value="Vivienda">Vivienda</option>
+                <option value="Alimentación">Alimentación</option>
+                <option value="Entretenimiento">Entretenimiento</option>
+                <option value="Salud">Salud</option>
+                <option value="Otros">Otros</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="amount" class="form-label">Monto</label>
+              <input type="text" class="form-control" name="monto">
+            </div>
+            <div class="modal-footer">
+              <input type="submit" value="Guardar" class="btn btn-success">
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-  <!-- /Modal -->
-  
-    <h1>Dead Simple Modal</h1>
-    <p><a href="#" class="btn btn-big openmodale">Open Login Box</a></p>
 {% endblock %}

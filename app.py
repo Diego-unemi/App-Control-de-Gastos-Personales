@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///c:/Users/neira/OneDrive/Documentos/proyecto/App-Control-de-Gastos-Personales/data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:/Users/Usuario/Desktop/App-Control-de-Gastos-Personales/data.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 app.app_context().push()
@@ -34,6 +34,18 @@ def home():
 def registro():
     bills = Bill.query.order_by(Bill.date.asc()).all()
     return render_template('record.html', bills=bills)
+
+
+@app.route('/add', methods=['POST'])
+def agregar():
+    nombre = request.form.get('nombre')
+    descripcion = request.form.get('descripcion')
+    categoria = request.form.get('categoria')
+    monto = request.form.get('monto')
+    bill = Bill(name=nombre, description=descripcion, category=categoria, amount=monto)
+    db.session.add(bill)
+    db.session.commit()
+    return redirect('/registro')
 
 
 @app.route('/del', methods=['POST'])
