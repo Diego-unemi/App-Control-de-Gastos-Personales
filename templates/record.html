@@ -1,11 +1,10 @@
 {% extends 'layout.html' %}
 {% block body %}
-<div class="content" style="margin-left: 200px;">
-  <div class="resume">
+<div class="record">
       <table class="table table-bordered border-info">
           <thead>
               <tr>
-                <th colspan="5"><button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#modal1">Agregar</button></th>
+                <th colspan="5"><button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#modalA">Agregar</button></th>
               </tr>
               <tr>
                   <th scope="col">Nombre</th>
@@ -16,13 +15,56 @@
               </tr>
           </thead>
           <tbody>
-              {% for bill in bills %}
+              {% for bill in bills_today %}
               <tr>
                   <td>{{ bill.name }}</td>
                   <td>{{ bill.description }}</td>
                   <td>{{ bill.category }}</td>
                   <td>$ {{ bill.amount }}</td>
                   <td>
+                    <button class="btn btn-warning" type="button" data-bs-toggle="modal" data-bs-target="#modal{{ bill.id }}">Editar</button>
+                    <!-- Modal del botón de editar -->
+                    <div class="modal fade" id="modal{{ bill.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Editar Gasto</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <form action="{{ url_for('editar') }}" method="post">
+                              <input type="hidden" value="{{ bill.id }}" name="bill_id">
+                              <div class="mb-3">
+                                <label for="name" class="form-label">Nuevo nombre</label>
+                                <input type="text" class="form-control" name="new_nombre">
+                              </div>
+                              <div class="mb-3">
+                                <label for="description" class="form-label">Nueva descripción</label>
+                                <input type="text" class="form-control" name="new_descripcion">
+                              </div>
+                              <div class="mb-3">
+                                <label for="categoria" class="form-label">Nueva categoría</label>
+                                <select name="new_categoria" class="form-select">
+                                  <option selected>-------</option>
+                                  <option value="Vivienda">Vivienda</option>
+                                  <option value="Alimentación">Alimentación</option>
+                                  <option value="Entretenimiento">Entretenimiento</option>
+                                  <option value="Salud">Salud</option>
+                                  <option value="Otros">Otros</option>
+                                </select>
+                              </div>
+                              <div class="mb-3">
+                                <label for="amount" class="form-label">Nuevo monto</label>
+                                <input type="text" class="form-control" name="new_monto">
+                              </div>
+                              <div class="modal-footer">
+                                <input type="submit" value="Guardar" class="btn btn-success">
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <form action="{{ url_for('eliminar') }}" method="post">
                       <button value="{{ bill.id }}" name="bill-id" class="btn btn-danger">Eliminar</button>
                     </form>
@@ -33,7 +75,9 @@
       </table>
   </div>
 
-  <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- Modal del botón de agregar -->
+
+  <div class="modal fade" id="modalA" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">

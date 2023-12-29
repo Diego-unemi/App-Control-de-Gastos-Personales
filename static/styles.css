@@ -10,7 +10,7 @@
 
 body {
   min-height: 100vh;
-  background: #eef5fe;
+  background: #7f8fa6;
 }
 
 /* Pre css */
@@ -26,8 +26,8 @@ body {
 }
 
 .nav_image img {
-  height: 35px;
-  width: 35px;
+  height: 65px;
+  width: 65px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -40,7 +40,7 @@ body {
   height: 100%;
   width: 200px;
   /* Ajusta el ancho según tus necesidades */
-  background: #fff;
+  background: #8c7ae6;
   padding: 15px 10px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
   transition: all 0.4s ease;
@@ -173,7 +173,7 @@ body {
   padding-top: 15px;
   margin-top: 15px;
   gap: 15px;
-  border-top: 2px solid rgba(0, 0, 0, 0.1);
+  border-top: 3px solid black;
 }
 
 .sidebar_profile .name {
@@ -194,7 +194,7 @@ body {
   top: 0;
   left: 60%;
   transform: translateX(-50%);
-  background: #fff;
+  background: #dcdde1;
   padding: 10px 20px;
   border-radius: 0 0 8px 8px;
   justify-content: space-between;
@@ -299,3 +299,31 @@ body {
   padding: 15px 20px;
   min-width: 100px;
 }
+
+.resume {
+  margin-left: 200px;
+}
+.resume h1{
+  margin-left: 20px;
+  margin-top: 10px;
+}
+.resume table{
+  margin-left: 50px;
+  margin-top: 30px;
+  width: 600px;
+  height: 200px;
+}
+
+.record {
+  margin-left: 200px;
+}
+.record table {
+  margin-left: 20px;
+  margin-top: 10px;
+  width: 1110px;
+  height: 200px;
+}
+.record .btn-warning{
+  width: 90px;
+}
+

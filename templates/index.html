@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% block body %}
-<div class="content" style="margin-left: 200px;">
 <div class="resume">
+    <h1 class="display-6">Hoy</h1>
     <table class="table table-bordered border-info">
         <thead>
             <tr>
@@ -11,7 +11,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for bill in bills %}
+            {% for bill in bills_today %}
             <tr>
                 <td>{{ bill.name }}</td>
                 <td>{{ bill.description }}</td>
